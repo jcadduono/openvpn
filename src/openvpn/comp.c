@@ -73,6 +73,14 @@ comp_init(const struct compress_options *opt)
       compctx->alg = lz4v2_alg;
       break;
 #endif
+#ifdef ENABLE_ZSTD
+    case COMP_ALG_ZSTD:
+      ALLOC_OBJ_CLEAR (compctx, struct compress_context);
+      compctx->flags = opt->flags;
+      compctx->alg = zstd_alg;
+      (*compctx->alg.compress_init)(compctx);
+      break;
+#endif
     }
   if (compctx)
     (*compctx->alg.compress_init)(compctx);
@@ -150,6 +158,9 @@ comp_generate_peer_info_string(const struct compress_options *opt, struct buffer
 #if defined(ENABLE_LZ4)
 	  buf_printf (out, "IV_LZ4=1\n");
 	  buf_printf (out, "IV_LZ4v2=1\n");
+#endif
+#if defined(ENABLE_ZSTD)
+	  buf_printf (out, "IV_ZSTD=1\n");
 #endif
 #if defined(ENABLE_LZO)
 	  buf_printf (out, "IV_LZO=1\n");

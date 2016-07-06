@@ -2,3 +2,7 @@
 	path = vendor/cmocka
 	url = git://git.cryptomilk.org/projects/cmocka.git
 	branch = master
+[submodule "src/compat/compat-zstd"]
+	path = src/compat/compat-zstd
+	url = https://github.com/jcadduono/compat-zstd.git
+	branch = master

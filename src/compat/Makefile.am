@@ -12,6 +12,8 @@
 MAINTAINERCLEANFILES = \
 	$(srcdir)/Makefile.in
 
+SUBDIRS = compat-zstd
+
 EXTRA_DIST = \
 	compat.vcxproj \
 	compat.vcxproj.filters
@@ -29,3 +31,6 @@ libcompat_la_SOURCES = \
 	compat-inet_pton.c \
 	compat-lz4.c compat-lz4.h \
 	compat-versionhelpers.h
+
+libcompat_la_LIBADD = \
+	compat-zstd/libzstd.la
