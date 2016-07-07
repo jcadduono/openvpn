@@ -1,4 +1,4 @@
-AUTOMAKE_OPTIONS = foreign
+AUTOMAKE_OPTIONS = foreign subdir-objects
 
 if ENABLE_PLUGIN_AUTH_PAM
 check_PROGRAMS = auth_pam_testdriver

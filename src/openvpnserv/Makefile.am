@@ -13,6 +13,8 @@ include $(top_srcdir)/build/ltrc.inc
 
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 
+AUTOMAKE_OPTIONS = subdir-objects
+
 EXTRA_DIST = \
 	openvpnserv.vcxproj \
 	openvpnserv.vcxproj.filters
@@ -30,7 +32,7 @@ openvpnserv_LDADD = -ladvapi32 -luserenv -liphlpapi -lfwpuclnt -lrpcrt4 -lshlwap
 endif
 
 openvpnserv_SOURCES = \
-        common.c \
+	common.c \
 	automatic.c \
 	interactive.c \
 	service.c service.h \
